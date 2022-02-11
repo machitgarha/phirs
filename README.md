@@ -15,6 +15,14 @@ For the best results, the location has to be cross-platform, permanent, well-kno
 
 Phirs can to help you in these situations.
 
+## Installation
+
+Easy like every other PHP library:
+
+```
+composer install machitgarha/phirs
+```
+
 ## License
 
 The project is licensed under [Apache 2.0 License](./LICENSE.md).
