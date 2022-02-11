@@ -14,3 +14,7 @@ When writing a console application (or even graphical one; who knows, people mig
 For the best results, the location has to be cross-platform, permanent, well-known and non-relative.
 
 Phirs can to help you in these situations.
+
+## License
+
+The project is licensed under [Apache 2.0 License](./LICENSE.md).
