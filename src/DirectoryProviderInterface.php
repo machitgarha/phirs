@@ -13,11 +13,11 @@ interface DirectoryProviderInterface
     public function getConfigPath(): string;
     public function getDataPath(): string;
 
-    public function getDesktop(): string;
+    public function getDesktopPath(): string;
     public function getDocumentPath(): string;
     public function getDownloadPath(): string;
     public function getMusicPath(): string;
     public function getPicturePath(): string;
-    public function gePublicPath(): string;
+    public function getPublicPath(): string;
     public function getVideoPath(): string;
 }
