@@ -1,11 +1,11 @@
 <?php
 
-namespace MAChitgarha\Phirs;
+namespace MAChitgarha\Phirs\Interfaces;
 
 /**
  * Providing user directory paths.
  */
-interface DirectoryProviderInterface
+interface StandardDirectoryProvider
 {
     public function getHomePath(): string;
 
