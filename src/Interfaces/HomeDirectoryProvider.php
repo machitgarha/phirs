@@ -16,5 +16,5 @@ interface HomeDirectoryProvider
      * @param string ...$paths The directory names to be appended to the home
      * path, in order.
      */
-    public function getHomeChildPath(string ...$paths): ?string;
+    public function getHomeChildPath(string ...$childPaths): ?string;
 }

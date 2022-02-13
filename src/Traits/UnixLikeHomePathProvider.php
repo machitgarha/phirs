@@ -4,7 +4,7 @@ namespace MAChitgarha\Phirs\Traits;
 
 use MAChitgarha\Phirs\Util\Env;
 
-trait UnixLikeHomePath
+trait UnixLikeHomePathProvider
 {
     public function getHomePath(): ?string
     {
