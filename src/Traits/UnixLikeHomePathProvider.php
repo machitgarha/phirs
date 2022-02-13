@@ -6,6 +6,8 @@ use MAChitgarha\Phirs\Util\Env;
 
 trait UnixLikeHomePathProvider
 {
+    use HomeChildPathProvider;
+
     public function getHomePath(): ?string
     {
         return Env::get('HOME') ?? $this->getHomePathByPosixUid();
