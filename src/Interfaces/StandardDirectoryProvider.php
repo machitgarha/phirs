@@ -3,7 +3,7 @@
 namespace MAChitgarha\Phirs\Interfaces;
 
 /**
- * Providing user directory paths.
+ * Providing standard paths, tends to be cross-platform.
  */
 interface StandardDirectoryProvider extends
     HomeDirectoryProvider,
@@ -12,7 +12,12 @@ interface StandardDirectoryProvider extends
     public function getCachePath(): ?string;
     public function getConfigPath(): ?string;
     public function getDataPath(): ?string;
-
-    public function getDesktopPath(): ?string;
-    public function getPublicPath(): ?string;
 }
+
+/*
+ * As it tends to be cross-platform, and by it, we mean not to restrict into
+ * desktop space, it has to be minimal. Not meaning adding features are
+ * impossible, but care must be taken in the case of any changes.
+ *
+ * But hey, nothing is ideal, so this is not going to be 100% cross-platform.
+ */
