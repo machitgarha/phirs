@@ -9,4 +9,5 @@ class LinuxDirectoryProvider implements Interfaces\StandardDirectoryProvider
 {
     use Traits\XdgBasedirSpec;
     use Traits\HomeBasedCommonPathProvider;
+    use Traits\TemplatesPathProvider;
 }
