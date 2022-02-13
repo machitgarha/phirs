@@ -5,10 +5,8 @@ namespace MAChitgarha\Phirs\Interfaces;
 /**
  * Providing user directory paths.
  */
-interface StandardDirectoryProvider
+interface StandardDirectoryProvider implements HomeDirectoryProvider
 {
-    public function getHomePath(): ?string;
-
     public function getCachePath(): ?string;
     public function getConfigPath(): ?string;
     public function getDataPath(): ?string;
