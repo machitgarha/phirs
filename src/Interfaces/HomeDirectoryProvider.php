@@ -4,7 +4,7 @@ namespace MAChitgarha\Phirs\Interfaces;
 
 interface HomeDirectoryProvider
 {
-    public function getHomePath(): ?string;
+    public function getHomePath(): string;
 
     /**
      * Return a child directory absolute path relative to user home path.
@@ -16,5 +16,5 @@ interface HomeDirectoryProvider
      * @param string ...$paths The directory names to be appended to the home
      * path, in order.
      */
-    public function getHomeChildPath(string ...$childPaths): ?string;
+    public function getHomeChildPath(string ...$childPaths): string;
 }

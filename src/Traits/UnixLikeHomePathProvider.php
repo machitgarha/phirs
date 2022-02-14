@@ -3,14 +3,18 @@
 namespace MAChitgarha\Phirs\Traits;
 
 use MAChitgarha\Phirs\Util\Env;
+use MAChitgarha\Phirs\Util\Util;
 
 trait UnixLikeHomePathProvider
 {
     use HomeChildPathProvider;
 
-    public function getHomePath(): ?string
+    public function getHomePath(): string
     {
-        return Env::get('HOME') ?? $this->getHomePathByPosixUid();
+        return Util::returnNonNull(
+            Env::get('HOME') ?? $this->getHomePathByPosixUid(),
+            'Cannot detect $HOME directory'
+        );
     }
 
     /**

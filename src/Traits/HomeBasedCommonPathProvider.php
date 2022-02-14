@@ -7,29 +7,29 @@ namespace MAChitgarha\Phirs\Traits;
  */
 trait HomeBasedCommonPathProvider
 {
-    abstract public function getHomeChildPath(string ...$childPaths): ?string;
+    abstract public function getHomeChildPath(string ...$childPaths): string;
 
-    public function getDocumentsPath(): ?string
+    public function getDocumentsPath(): string
     {
         return $this->getHomeChildPath('Documents');
     }
 
-    public function getDownloadsPath(): ?string
+    public function getDownloadsPath(): string
     {
         return $this->getHomeChildPath('Downloads');
     }
 
-    public function getMusicPath(): ?string
+    public function getMusicPath(): string
     {
         return $this->getHomeChildPath('Music');
     }
 
-    public function getPicturesPath(): ?string
+    public function getPicturesPath(): string
     {
         return $this->getHomeChildPath('Pictures');
     }
 
-    public function getVideosPath(): ?string
+    public function getVideosPath(): string
     {
         return $this->getHomeChildPath('Videos');
     }

@@ -6,7 +6,7 @@ class Env
 {
     public static function get(string $name): ?string
     {
-        return getenv($name) ?: null;
+        return \getenv($name) ?: null;
     }
 
     /**
@@ -14,11 +14,11 @@ class Env
      */
     public static function getColonedArray(string $name): ?array
     {
-        $rawValue = getenv($name);
+        $rawValue = \getenv($name);
 
         if (empty($rawValue)) {
             return null;
         }
-        return explode(':', $rawValue);
+        return \explode(':', $rawValue);
     }
 }

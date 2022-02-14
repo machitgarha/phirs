@@ -9,15 +9,10 @@ use Symfony\Component\Filesystem\Path;
  */
 trait HomeChildPathProvider
 {
-    abstract public function getHomePath(): ?string;
+    abstract public function getHomePath(): string;
 
-    public function getHomeChildPath(string ...$childPaths): ?string
+    public function getHomeChildPath(string ...$childPaths): string
     {
-        $homePath = $this->getHomePath();
-
-        if ($homePath === null) {
-            return null;
-        }
-        return Path::join($homePath, ...$childPaths);
+        return Path::join($this->getHomePath(), ...$childPaths);
     }
 }

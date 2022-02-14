@@ -7,9 +7,9 @@ namespace MAChitgarha\Phirs\Interfaces;
  */
 class CommonDirectoryProvider
 {
-    public function getDocumentsPath(): ?string;
-    public function getDownloadsPath(): ?string;
-    public function getMusicPath(): ?string;
-    public function getPicturesPath(): ?string;
-    public function getVideosPath(): ?string;
+    public function getDocumentsPath(): string;
+    public function getDownloadsPath(): string;
+    public function getMusicPath(): string;
+    public function getPicturesPath(): string;
+    public function getVideosPath(): string;
 }

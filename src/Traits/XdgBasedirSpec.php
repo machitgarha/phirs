@@ -2,7 +2,9 @@
 
 namespace MAChitgarha\Phirs\Traits;
 
+use Exception;
 use MAChitgarha\Phirs\Util\Env;
+use MAChitgarha\Phirs\Util\Util;
 
 /**
  * @todo Make sure paths are absolute (non-relative), to match the spec better.
@@ -11,47 +13,74 @@ trait XdgBasedirSpec
 {
     use UnixLikeHomePathProvider;
 
-    public function getDataPath(): ?string
-    {
-        return Env::get('XDG_DATA_HOME') ??
-            $this->getHomeChildPath('.local', 'share');
+    private function getEnvOrHomeChildPath(
+        string $envName,
+        array $childPaths
+    ): string {
+        /*
+         * Let's decide based on what happens. If the dedicated environment var
+         * is set, everything is good, otherwise, we refer to the fallback path.
+         * Here, if home directory is found, we have no problem, but else, we
+         * should tell in the exception that the environment variable is not
+         * set, plus the home directory cannot be found.
+         *
+         * So, obviously, the whole expression will not be null, so we don't
+         * need to check it with something like Util::returnNonNull().
+         */
+        try {
+            return Env::get($envName) ??
+                $this->getHomeChildPath(...$childPaths);
+        } catch (Exception $e) {
+            throw new Exception(
+                "Cannot find a proper path for the requested directory " .
+                "(reasons: env $envName not set and {$e->getMessage()})"
+            );
+        }
     }
 
-    public function getConfigPath(): ?string
+    public function getDataPath(): string
     {
-        return Env::get('XDG_CONFIG_HOME') ??
-            $this->getHomeChildPath('.config');
+        return $this->getEnvOrHomeChildPath(
+            'XDG_DATA_HOME',
+            ['.local', 'share']
+        );
     }
 
-    public function getCachePath(): ?string
+    public function getConfigPath(): string
     {
-        return Env::get('XDG_CACHE_DIRS') ??
-            $this->getHomeChildPath('.cache');
+        return $this->getEnvOrHomeChildPath('XDG_CONFIG_HOME', ['.config']);
     }
 
-    public function getStatePath(): ?string
+    public function getCachePath(): string
     {
-        return Env::get('XDG_STATE_HOME') ??
-            $this->getHomeChildPath('.local', 'state');
+        return $this->getEnvOrHomeChildPath('XDG_CACHE_HOME', ['.cache']);
     }
 
-    public function getExecutablePath(): ?string
+    public function getStatePath(): string
+    {
+        return $this->getEnvOrHomeChildPath(
+            'XDG_STATE_HOME',
+            ['.local', 'state'],
+        );
+    }
+
+    public function getExecutablePath(): string
     {
         return $this->getHomeChildPath('.local', 'bin');
     }
 
-    public function getRuntimePath(): ?string
+    public function getRuntimePath(): string
     {
-        return Env::get('XDG_RUNTIME_DIR');
+        return Util::returnNonNull(Env::get('XDG_RUNTIME_DIR'));
     }
 
-    public function getDataPathSet(): ?array
+    public function getDataPathSet(): array
     {
         return Env::getColonedArray('XDG_DATA_DIRS') ??
             ['/usr/local/share/', '/usr/share/'];
     }
 
-    public function getConfigPathSet(): ?array
+    public function getConfigPathSet(): array
     {
         return Env::getColonedArray('XDG_CONFIG_DIRS') ??
             ['/etc/xdg'];

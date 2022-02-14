@@ -9,9 +9,9 @@ interface StandardDirectoryProvider extends
     HomeDirectoryProvider,
     CommonDirectoryProvider
 {
-    public function getCachePath(): ?string;
-    public function getConfigPath(): ?string;
-    public function getDataPath(): ?string;
+    public function getCachePath(): string;
+    public function getConfigPath(): string;
+    public function getDataPath(): string;
 }
 
 /*
