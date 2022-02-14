@@ -1,11 +1,11 @@
 <?php
 
-namespace MAChitgarha\Phirs\Traits;
+namespace MAChitgarha\Phirs\Traits\HomeBased;
 
 /**
  * Providing paths by appending related common directory name to home path.
  */
-trait HomeBasedCommonPathProvider
+trait CommonPathProvider
 {
     abstract public function getHomeChildPath(string ...$childPaths): string;
 

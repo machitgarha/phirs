@@ -1,6 +1,6 @@
 <?php
 
-namespace MAChitgarha\Phirs\Traits;
+namespace MAChitgarha\Phirs\Traits\HomeBased;
 
 trait TemplatesPathProvider
 {

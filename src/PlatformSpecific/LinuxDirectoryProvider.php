@@ -9,8 +9,8 @@ use Symfony\Component\Filesystem\Path;
 class LinuxDirectoryProvider implements Interfaces\StandardDirectoryProvider
 {
     use Traits\XdgBasedirSpec;
-    use Traits\HomeBasedCommonPathProvider;
-    use Traits\TemplatesPathProvider;
+    use Traits\HomeBased\CommonPathProvider;
+    use Traits\HomeBased\TemplatesPathProvider;
 
     public function getFontsPath(): string
     {

@@ -13,8 +13,8 @@ interface HomeDirectoryProvider
      * path be not null, otherwise return null (instead of a non-sense relative
      * path).
      *
-     * @param string ...$paths The directory names to be appended to the home
-     * path, in order.
+     * @param string ...$childPaths The directory names to be appended to the
+     * home path, in order.
      */
     public function getHomeChildPath(string ...$childPaths): string;
 }
