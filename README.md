@@ -2,6 +2,14 @@
 
 A library providing platform-specific user-accessible directory paths, such as config and cache. Inspired by [dirs-rs](https://github.com/dirs-dev/dirs-rs).
 
+## Features
+
+-   **Cross-platform**. Supporting multiple platforms, including GNU/Linux, Windows and Mac OS. Providing paths available on all platforms, plus specific paths for each platform. This means, you could target a specific platform, stick to it and look nowhere else.
+
+-   **Hackable**. Adding support for a specific platform [is easy](#). <!-- TODO: Add a link to contributions describing this. -->
+
+-   **Well-designed**. Provide good design and simple abstractions (with the help of powerful PHP interfaces and traits).
+
 ## Why?
 
 When writing a console application (or even a graphical one; who knows, people might start writing graphical applications in PHP in near future), sometimes you need to have a location to:
@@ -19,19 +27,7 @@ Phirs can to help you in these situations.
 
 Why not just using [Basedir](https://github.com/clue-labs/php-basedir)?
 
-The library is already good to be used. However, there are some reasons you might prefer this library:
-
--   With the help of simple abstractions, adding support for a specific platform should be easy. <!-- TODO: Add a link to contributions describing this. --> The abstractions are designed with performance in mind.
-
-    **Note:** For having something like this in Basedir, a major rewrite and huge backward-compatibility break would be required.
-
--   If you want or have to, you can target a specific platform and stick to it.
-
--   Support for more platforms.
-
--   Support for more directories.
-
--   Basedir is [no longer available](https://packagist.org/search/?q=basedir) on Packagist for some reason.
+Go back and see [features](#features). Having these there would require a major rewrite and huge backward-compatibility break. Plus, Basedir is [no longer available on Packagist](https://packagist.org/search/?q=basedir), for some unknown reason.
 
 ## Installation
 
