@@ -32,18 +32,10 @@ trait XdgBasedirSpec
                 $this->getHomeChildPath(...$childPaths);
         } catch (Exception $e) {
             throw new Exception(
-                "Cannot find a proper path for the requested directory " .
-                "(reasons: env $envName not set and {$e->getMessage()})"
+                'Cannot find a proper path for the requested directory ' .
+                "(reasons: Env $envName not set and {$e->getMessage()})"
             );
         }
-    }
-
-    public function getDataPath(): string
-    {
-        return $this->getEnvOrHomeChildPath(
-            'XDG_DATA_HOME',
-            ['.local', 'share']
-        );
     }
 
     public function getConfigPath(): string
@@ -54,6 +46,14 @@ trait XdgBasedirSpec
     public function getCachePath(): string
     {
         return $this->getEnvOrHomeChildPath('XDG_CACHE_HOME', ['.cache']);
+    }
+
+    public function getDataPath(): string
+    {
+        return $this->getEnvOrHomeChildPath(
+            'XDG_DATA_HOME',
+            ['.local', 'share']
+        );
     }
 
     public function getStatePath(): string
@@ -74,15 +74,15 @@ trait XdgBasedirSpec
         return Util::returnNonNull(Env::get('XDG_RUNTIME_DIR'));
     }
 
-    public function getDataPathSet(): array
-    {
-        return Env::getColonedArray('XDG_DATA_DIRS') ??
-            ['/usr/local/share/', '/usr/share/'];
-    }
-
     public function getConfigPathSet(): array
     {
         return Env::getColonedArray('XDG_CONFIG_DIRS') ??
             ['/etc/xdg'];
+    }
+
+    public function getDataPathSet(): array
+    {
+        return Env::getColonedArray('XDG_DATA_DIRS') ??
+            ['/usr/local/share/', '/usr/share/'];
     }
 }
