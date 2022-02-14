@@ -5,6 +5,7 @@ namespace MAChitgarha\Phirs\PlatformSpecific;
 use MAChitgarha\Phirs\Interfaces;
 use MAChitgarha\Phirs\Traits;
 use MAChitgarha\Phirs\Util\Env;
+use MAChitgarha\Phirs\Util\ExceptionMessageFactory;
 use MAChitgarha\Phirs\Util\Util;
 use Symfony\Component\Filesystem\Path;
 
@@ -19,7 +20,7 @@ class WindowsDirectoryProvider implements Interfaces\StandardDirectoryProvider
     {
         return Util::returnNonNull(
             Env::get('UserProfile') ?? $this->getHomeDriveHomePath(),
-            'Cannot detect home folder',
+            ExceptionMessageFactory::buildCannotFindPath('home folder'),
         );
     }
 
@@ -42,21 +43,40 @@ class WindowsDirectoryProvider implements Interfaces\StandardDirectoryProvider
     {
         return Util::returnNonNull(
             Env::get('AppData'),
-            'Cannot find roaming application data folder path'
+            ExceptionMessageFactory::buildCannotFindPath('AppData folder'),
         );
+    }
+
+    private function getLocalDataPathNullable(): ?string
+    {
+        return Env::get('LocalAppData');
     }
 
     public function getLocalDataPath(): string
     {
         return Util::returnNonNull(
-            Env::get('LocalAppData'),
-            'Could not find local application data folder path'
+            $this->getLocalDataPathNullable(),
+            ExceptionMessageFactory::buildCannotFindPath('LocalAppData folder'),
+        );
+    }
+
+    private function getTemporaryPathNullable(): ?string
+    {
+        return Env::get('Temp');
+    }
+
+    public function getTemporaryPath(): string
+    {
+        return Util::returnNonNull(
+            $this->getTemporaryPathNullable(),
+            ExceptionMessageFactory::buildCannotFindPath('temporary folder'),
         );
     }
 
     public function getCachePath(): string
     {
-        return $this->getLocalDataPath();
+        return $this->getLocalDataPathNullable() ??
+            $this->getTemporaryPathNullable();
     }
 
     public function getConfigPath(): string
