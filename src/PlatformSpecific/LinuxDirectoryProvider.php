@@ -6,10 +6,7 @@ use MAChitgarha\Phirs\Interfaces;
 use MAChitgarha\Phirs\Traits;
 use Symfony\Component\Filesystem\Path;
 
-class LinuxDirectoryProvider implements
-    Interfaces\StandardDirectoryProvider,
-    Interfaces\DesktopDirectoryProvider,
-    Interfaces\PublicDirectoryProvider
+class LinuxDirectoryProvider implements Interfaces\StandardDirectoryProvider
 {
     use Traits\XdgBasedirSpec;
     use Traits\HomeBased\CommonPathProvider;
