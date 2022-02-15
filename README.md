@@ -4,7 +4,7 @@ A library providing platform-specific user-accessible directory paths, such as c
 
 ## Features
 
--   **Cross-platform**. Supporting multiple platforms, including GNU/Linux, Windows and Mac OS. Providing paths available on all platforms, plus specific paths for each platform. This means, you could target a specific platform, stick to it and look nowhere else.
+-   **Multiple platform**. Providing cross-platform paths, plus platform-specific ones. Make your app run-everywhere or target a specific platform. See [Platform Support](#platform-support) for more details.
 
 -   **Hackable**. Adding support for a specific platform [is easy](#). <!-- TODO: Add a link to contributions describing this. -->
 
@@ -36,6 +36,33 @@ Easy like every other PHP library:
 ```
 composer install machitgarha/phirs
 ```
+
+## Platform Support
+
+**Note:** The table below is only
+
+|Platform|Having a Provider?|Supported?|Working?|Having a Specialized Provider?|
+|:-:|:-:|:-:|:-:|:-:|
+|GNU/Linux distributions|✅|✅|✅|✅|
+|Windows|✅|✅|✅|✅|
+|Mac OS|✅|✅|✅|✅|
+|[Termux](https://termux.com) on Android|✅|✅|✅❕|❌|
+|BSD|✅|❌|❔|❌|
+|Solaris|✅|❌|❔|❌|
+|Android|✅|❌|❓|❌|
+|iOS|✅|❌|❔|❌|
+
+❕: Have notes.
+❔: Not known or depends on the environment.
+❓: Like ❔, but most likely not working.
+
+### Notes
+
+-   It might not be exactly what you or users expect; e.g. pictures directory path is inside Termux home, not the internal SDCard (i.e. `/sdcard`).
+
+### Fork and Improve It!
+
+By the way, if you can improve support for a specific platform, why not?
 
 ## License
 
