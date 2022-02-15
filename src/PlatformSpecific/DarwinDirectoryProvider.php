@@ -5,7 +5,10 @@ namespace MAChitgarha\Phirs\PlatformSpecific;
 use MAChitgarha\Phirs\Interfaces;
 use MAChitgarha\Phirs\Traits;
 
-class MacOsDirectoryProvider implements Interfaces\StandardDirectoryProvider
+/**
+ * Provider for Darwin-based OSes, such as MacOS and iOS.
+ */
+class DarwinDirectoryProvider implements Interfaces\StandardDirectoryProvider
 {
     use Traits\UnixLikeHomePathProvider;
     use Traits\HomeBased\CommonPathProvider;
