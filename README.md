@@ -37,9 +37,27 @@ Easy like every other PHP library:
 composer install machitgarha/phirs
 ```
 
-## Platform Support
+## Basic Usage
 
-**Note:** The table below is only
+A simple use for most common cases is the following:
+
+```php
+use MAChitgarha\Phirs\DirectoryProviderFactory;
+use MAChitgarha\Phirs\Util\Platform;
+
+// Get a directory provider for your platform, which is auto-detected
+$dirProvider = DirectoryProviderFactory::createStandard(
+    Platform::autoDetect()
+);
+
+// Let's get some paths!
+$configPath = $dirProvider->getConfigPath();
+$docsPath = $dirProvider->getDocumentsPath();
+
+// Load or save something…!
+```
+
+## Platform Support
 
 |Platform|Having a Provider?|Supported?|Working?|Having a Specialized Provider?|
 |:-:|:-:|:-:|:-:|:-:|
