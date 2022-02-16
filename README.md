@@ -29,6 +29,10 @@ Why not just using [Basedir](https://github.com/clue-labs/php-basedir)?
 
 Go back and see [features](#features). Having these there would require a major rewrite and huge backward-compatibility break. Plus, Basedir is [no longer available on Packagist](https://packagist.org/search/?q=basedir), for some unknown reason.
 
+## Requirements
+
+PHP 7.4+ only.
+
 ## Installation
 
 Easy like every other PHP library:
@@ -45,7 +49,7 @@ A simple use for most common cases is the following:
 use MAChitgarha\Phirs\DirectoryProviderFactory;
 use MAChitgarha\Phirs\Util\Platform;
 
-// Get a directory provider for your platform, which is auto-detected
+// Get a provider for the current platform
 $dirProvider = DirectoryProviderFactory::createStandard(
     Platform::autoDetect()
 );
@@ -56,6 +60,8 @@ $docsPath = $dirProvider->getDocumentsPath();
 
 // Load or save something…!
 ```
+
+What a provider is? Why we use `createStandard`? Can I extend it and map a specific platform to my own provider? (Consider give your code back if you did it BTW.) See [Usage Guide](./docs/en/usage-guide.md) for more details.
 
 ## Platform Support
 
@@ -72,7 +78,7 @@ $docsPath = $dirProvider->getDocumentsPath();
 
 ❕: Have notes.
 ❔: Not known or depends on the environment.
-❓: Like ❔, but most likely not working.
+❓: Like ❔, but most likely no.
 
 ### Notes
 
