@@ -1,6 +1,6 @@
 <?php
 
-namespace MAChitgarha\Phirs\Definitions;
+namespace MAChitgarha\Phirs\Types;
 
 /**
  * Provide common well-known paths for storing media files, documents, etc.

@@ -1,6 +1,6 @@
 <?php
 
-namespace MAChitgarha\Phirs\Definitions;
+namespace MAChitgarha\Phirs\Types;
 
 interface HomeDirectoryProvider
 {
