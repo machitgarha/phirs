@@ -2,14 +2,14 @@
 
 namespace MAChitgarha\Phirs\PlatformSpecific;
 
-use MAChitgarha\Phirs\Interfaces;
+use MAChitgarha\Phirs\Definitions;
 use MAChitgarha\Phirs\Traits;
 use MAChitgarha\Phirs\Util\Env;
 use MAChitgarha\Phirs\Util\ExceptionMessageFactory;
 use MAChitgarha\Phirs\Util\Util;
 use Symfony\Component\Filesystem\Path;
 
-class WindowsDirectoryProvider implements Interfaces\StandardDirectoryProvider
+class WindowsDirectoryProvider implements Definitions\StandardDirectoryProvider
 {
     use Traits\HomeBased\CommonPathProvider;
     use Traits\HomeBased\DesktopPathProvider;

@@ -1,6 +1,6 @@
 <?php
 
-namespace MAChitgarha\Phirs\Interfaces;
+namespace MAChitgarha\Phirs\Definitions;
 
 /**
  * Providing standard paths, tends to be cross-platform.
