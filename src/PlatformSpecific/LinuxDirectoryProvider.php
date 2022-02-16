@@ -2,11 +2,11 @@
 
 namespace MAChitgarha\Phirs\PlatformSpecific;
 
-use MAChitgarha\Phirs\Types;
+use MAChitgarha\Phirs\Type;
 use MAChitgarha\Phirs\Traits;
 use Symfony\Component\Filesystem\Path;
 
-class LinuxDirectoryProvider implements Types\StandardDirectoryProvider
+class LinuxDirectoryProvider implements Type\StandardDirectoryProvider
 {
     use Traits\XdgBasedirSpec;
     use Traits\HomeBased\CommonPathProvider;
