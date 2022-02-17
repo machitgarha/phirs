@@ -114,6 +114,7 @@ class DirectoryProviderFactory
     public static function create(string $type, string $platform): object
     {
         self::validateType($type);
+
         return self::createInternal($type, $platform);
     }
 
@@ -156,7 +157,21 @@ class DirectoryProviderFactory
         string $provider
     ): string {
         self::validateType($type);
+
         return self::mapInternal($type, $platform, $provider);
+    }
+
+    public static function mapMany(
+        string $type,
+        array $mapping
+    ): string {
+        self::validateType($type);
+
+        foreach ($mapping as $platform => $provider) {
+            self::mapInternal($type, $platform, $provider);
+        }
+
+        return self::class;
     }
 
     /**
