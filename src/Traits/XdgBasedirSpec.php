@@ -4,7 +4,7 @@ namespace MAChitgarha\Phirs\Traits;
 
 use MAChitgarha\Phirs\Exception\PathNotFoundException;
 use MAChitgarha\Phirs\Util\Env;
-use MAChitgarha\Phirs\Util\Util;
+use MAChitgarha\Phirs\Util\Path;
 
 /**
  * @todo Make sure paths are absolute (non-relative), to match the spec better.
@@ -71,7 +71,10 @@ trait XdgBasedirSpec
 
     public function getRuntimePath(): string
     {
-        return Util::returnNonNull(Env::get('XDG_RUNTIME_DIR'));
+        return Path::returnNonEmpty(
+            Env::get('XDG_RUNTIME_DIR'),
+            'runtime directory'
+        );
     }
 
     public function getConfigPathSet(): array

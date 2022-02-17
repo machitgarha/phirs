@@ -11,10 +11,13 @@ class Path
      *
      * @param string $pathName Name of the directory the path belongs to.
      */
-    public static function returnNonEmpty(?string $path, string $pathName): void
-    {
+    public static function returnNonEmpty(
+        ?string $path,
+        string $pathName
+    ): string {
         if ($path === null || $path === '') {
             throw new PathNotFoundException($pathName);
         }
+        return $path;
     }
 }
