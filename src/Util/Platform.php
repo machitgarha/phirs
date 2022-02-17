@@ -11,23 +11,35 @@ class Platform
     public const SOLARIS = 'Solaris';
     public const UNKNOWN = 'Unknown';
 
-    private static $mapper = [
-        static::LINUX => fn() => static::isLinux(),
-        static::DARWIN => fn() => static::isDarwin(),
-        static::WINDOWS => fn() => static::isWindows(),
-        static::BSD => fn() => static::isBsd(),
-        static::SOLARIS => fn() => static::isSolaris(),
+    private static array $detectors = [
+        self::LINUX => fn() => self::isLinux(),
+        self::DARWIN => fn() => self::isDarwin(),
+        self::WINDOWS => fn() => self::isWindows(),
+        self::BSD => fn() => self::isBsd(),
+        self::SOLARIS => fn() => self::isSolaris(),
     ];
+
+    /**
+     * Custom-defined mappings of platforms (keys) to detectors (values).
+     *
+     * These detectors will run _before_ the defaults. This way, you can
+     * specialize an available platform as a new platform, or prepend rules for
+     * detecting a platform.
+     */
+    protected static array $customDetectors = [];
 
     public static function autoDetect(): string
     {
-        foreach (self::$mapper as $platform => $isPlatform) {
-            if ($isPlatform()) {
+        foreach (
+            static::$customDetectors + self::$detectors
+                as $platform => $detector
+        ) {
+            if ($detector()) {
                 return $platform;
             }
         }
 
-        return static::UNKNOWN;
+        return self::UNKNOWN;
     }
 
     private static function isLinux(): bool
