@@ -72,3 +72,9 @@ $executables = $dirProvider->getExecutablesPath();
 ```
 
 **Important Note**: The returning paths are not checked to exist, be accessible (readable or writeable), or be absolute (i.e. not relative), because different users may have different needs.
+
+## Exception Handling
+
+All getter methods throw `PathNotFoundException` if the path cannot be built. There may be different reasons to this. For example, neither `%UserProfile%` nor `%HomeDrive%` environment variables defined on a Windows platform.
+
+`DirectoryProviderFactory` class throws `Exception`s (library-defined) in certain conditions, like wrong input arguments, or a provider not set for the requested platform and type. 
