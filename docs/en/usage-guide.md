@@ -114,7 +114,7 @@ Let's say you want to make a standard provider for Android platform, and set `Di
         public const ANDROID = 'Android';
 
         protected static array $customDetectors = [
-            self::ANDROID => fn() => self::isAndroid()
+            self::ANDROID => [self::class, 'isAndroid'],
         ];
 
         private static function isAndroid(): bool

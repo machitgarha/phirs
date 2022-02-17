@@ -12,11 +12,11 @@ class Platform
     public const UNKNOWN = 'Unknown';
 
     private static array $detectors = [
-        self::LINUX => fn() => self::isLinux(),
-        self::DARWIN => fn() => self::isDarwin(),
-        self::WINDOWS => fn() => self::isWindows(),
-        self::BSD => fn() => self::isBsd(),
-        self::SOLARIS => fn() => self::isSolaris(),
+        self::LINUX => [self::class, 'isLinux'],
+        self::DARWIN => [self::class, 'isDarwin'],
+        self::WINDOWS => [self::class, 'isWindows'],
+        self::BSD => [self::class, 'isBsd'],
+        self::SOLARIS => [self::class, 'isSolaris'],
     ];
 
     /**
