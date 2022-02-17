@@ -5,7 +5,7 @@ namespace MAChitgarha\Phirs\Type;
 /**
  * Provide common well-known paths for storing media files, documents, etc.
  */
-class CommonDirectoryProvider
+interface CommonDirectoryProvider
 {
     public function getDocumentsPath(): string;
     public function getDownloadsPath(): string;

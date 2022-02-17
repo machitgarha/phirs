@@ -13,10 +13,11 @@ class DarwinDirectoryProvider implements Type\StandardDirectoryProvider
     use Traits\UnixLikeHomePathProvider;
     use Traits\HomeBased\CommonPathProvider;
     use Traits\HomeBased\DesktopPathProvider;
-    use Traits\HomeBased\MoviesPathProvider {
-        MoviesPathProvider::getVideosPath insteadof CommonPathProvider;
-    }
     use Traits\HomeBased\PublicPathProvider;
+    use Traits\HomeBased\MoviesPathProvider {
+        Traits\HomeBased\MoviesPathProvider::getVideosPath insteadof
+            Traits\HomeBased\CommonPathProvider;
+    }
 
     private function getHomeLibraryChildPath(string ...$childPaths): string
     {

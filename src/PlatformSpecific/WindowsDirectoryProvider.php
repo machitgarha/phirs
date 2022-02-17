@@ -10,6 +10,7 @@ use Symfony\Component\Filesystem\Path as SymfonyPath;
 
 class WindowsDirectoryProvider implements Type\StandardDirectoryProvider
 {
+    use Traits\HomeChildPathProvider;
     use Traits\HomeBased\CommonPathProvider;
     use Traits\HomeBased\DesktopPathProvider;
     use Traits\HomeBased\PublicPathProvider;
