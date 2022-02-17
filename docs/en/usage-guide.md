@@ -47,10 +47,28 @@ $dirProvider = DirectoryProviderFactory::create(
 
 **Note**: By default, only standard provider type mappings are defined. However, you may extend the types using `map*()` methods.
 
-### Instantiaing Dedicated Provider
+### Instantiating Dedicated Provider
 
 Let's create a Linux provider directly:
 
 ```php
 $dirProvider = new LinuxDirectoryProvider();
 ```
+
+## Getting Path of Directories
+
+Based on which method you used to create a provider, you can use one of `get*Path()` methods to get path of a specific directory.
+
+```php
+// Get cache directory path
+$cacheDir = $dirProvider->getCachePath();
+```
+
+If you instantiated a provider directly, e.g. Linux provider, you may use platform-specific path getters, however:
+
+```php
+// Not available on Windows or Mac OS
+$executables = $dirProvider->getExecutablesPath();
+```
+
+**Important Note**: The returning paths are not checked to exist, be accessible (readable or writeable), or be absolute (i.e. not relative), because different users may have different needs.
