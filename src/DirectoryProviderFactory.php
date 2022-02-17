@@ -82,21 +82,28 @@ class DirectoryProviderFactory
         string $type,
         string $platform
     ): object {
-        $class = self::$providerMapper[$type][$platform] ?? null;
+        $providerMapperForType = self::$providerMapper[$type];
 
-        if (\is_null($class)) {
+        if (\is_null($providerMapperForType)) {
+            throw new Exception("No provider defined for type '$type'");
+        }
+
+        $provider = $providerMapperForType[$platform] ?? null;
+
+        if (\is_null($provider)) {
             throw new Exception(
-                "No provider of type '$type' set for "
+                "No provider of type '$type' set for $platform platform " .
+                '(maybe the running platform is not supported?)'
             );
         }
 
         /*
-         * No need to check if $class exists, $type is an interface and $class
-         * implements $type. Default mappings are correct, and any custom
-         * defined stuff is also checked in the mapInternal() method.
+         * No need to check if $provider exists, $type is an interface and
+         * $provider implements $type. Default mappings are correct, and any
+         * custom defined stuff is also checked in the mapInternal() method.
          */
 
-        return new $class();
+        return new $provider();
     }
 
     /**

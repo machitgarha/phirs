@@ -11,23 +11,22 @@ class Platform
     public const SOLARIS = 'Solaris';
     public const UNKNOWN = 'Unknown';
 
+    private static $mapper = [
+        static::LINUX => fn() => static::isLinux(),
+        static::DARWIN => fn() => static::isDarwin(),
+        static::WINDOWS => fn() => static::isWindows(),
+        static::BSD => fn() => static::isBsd(),
+        static::SOLARIS => fn() => static::isSolaris(),
+    ];
+
     public static function autoDetect(): string
     {
-        if (static::isLinux()) {
-            return static::LINUX;
+        foreach (self::$mapper as $platform => $isPlatform) {
+            if ($isPlatform()) {
+                return $platform;
+            }
         }
-        if (static::isDarwin()) {
-            return static::MAC_OS;
-        }
-        if (static::isWindows()) {
-            return static::WINDOWS;
-        }
-        if (static::isBsd()) {
-            return static::BSD;
-        }
-        if (static::isSolaris()) {
-            return static::SOLARIS;
-        }
+
         return static::UNKNOWN;
     }
 
