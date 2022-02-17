@@ -1,6 +1,6 @@
 # Usage Guide
 
-**Note:** In the examples, the `use` statements are eliminated.
+**Note:** In the examples, some of the `use` statements are eliminated.
 
 ## Overview of the Main Concepts
 
@@ -87,7 +87,7 @@ Using `map*()` methods, you could introduce new providers and types, map them to
 
 Let's say you want to make a standard provider for Android platform, and set `DirectoryProviderFactory` if the platform is Android. Here are the steps:
 
-1.  **Make a New Provider.** Create a class and put your provider logic there. As your provider is of a standard type, you must implement it. You may use traits defined by Phirs, or extend one of the existing providers.
+1.  **Create a New Provider.** Create a class and put your provider logic there. As your provider is of a standard type, you must implement it. You may use traits defined by Phirs, or extend one of the existing providers.
 
     ```php
     use MAChitgarha\Phirs\Type;
@@ -146,3 +146,65 @@ Let's say you want to make a standard provider for Android platform, and set `Di
     Now, if Android platform is detected by your `MyPlatform::isAndroid()`, a class instance of `AndroidDirectoryProvider` will be returned.
 
     But hey, if you really did this, or something cool alike, don't forget to merge changes back!
+
+### Example: Define a Custom Provider Type
+
+Suppose you want to make a desktop application. The standard provider type is not appropriate, as there may be some desktop-centric directories you want to use. The best example is the `Desktop` directory. So, what you should do?
+
+The steps are simple:
+
+1.  **Create Your Custom Provider Type.** Your type may extend other types as well.
+
+    ```php
+    use MAChitgarha\Phirs\Type;
+
+    interface DesktopDirectoryProvider extends Type\StandardDirectoryProvider
+    {
+        public function getDesktopPath(): string;
+    }
+    ```
+
+1.  **Create New Providers and Platforms, If Needed.** Refer to the previous example for more details.
+
+1.  **Register Your Mappings.** Using `DirectoryProviderFactory::map()`, introduce your new type and map your providers to platforms. Obviously, all your providers must implement your type, otherwise `map()` will throw an exception. You can use static method chaining trick also:
+
+    ```php
+    DirectoryProviderFactory
+        ::map(
+            DesktopDirectoryProvider::class,
+            MyPlatform::WINDOWS,
+            WindowsDirectoryProvider::class,
+        )
+        ::map(
+            DesktopDirectoryProvider::class,
+            MyPlatform::MAC_OS,
+            MacOsDirectoryProvider::class,
+        )
+        ::map(
+            DesktopDirectoryProvider::class,
+            MyPlatform::LINUX,
+            LinuxDirectoryProvider::class,
+        )
+    ;
+    ```
+
+    Or shorter with `DirectoryProviderFactory::mapMany()`:
+
+    ```php
+    DirectoryProviderFactory::mapMany(DesktopDirectoryProvider::class, [
+        MyPlatform::WINDOWS => WindowsDirectoryProvider::class,
+        MyPlatform::MAC_OS => MacOsDirectoryProvider::class,
+        MyPlatform::LINUX => LinuxDirectoryProvider::class,
+    ]);
+    ```
+
+1.  **Use It and Enjoy!**
+
+    ```php
+    $dirProvider = DirectoryProviderFactory::create(
+        DesktopDirectoryProvider::class,
+        MyPlatform::autoDetect(),
+    );
+    ```
+
+    And again, if you did something look like this, we ask you to share your code with us!
