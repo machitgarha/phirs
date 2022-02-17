@@ -50,7 +50,7 @@ use MAChitgarha\Phirs\DirectoryProviderFactory;
 use MAChitgarha\Phirs\Util\Platform;
 
 // Get a provider for the current platform
-$dirProvider = DirectoryProviderFactory::new()->createStandard(
+$dirProvider = DirectoryProviderFactory::createStandard(
     Platform::autoDetect()
 );
 
