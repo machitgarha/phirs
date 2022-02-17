@@ -5,9 +5,8 @@ namespace MAChitgarha\Phirs\PlatformSpecific;
 use MAChitgarha\Phirs\Type;
 use MAChitgarha\Phirs\Traits;
 use MAChitgarha\Phirs\Util\Env;
-use MAChitgarha\Phirs\Util\ExceptionMessageFactory;
-use MAChitgarha\Phirs\Util\Util;
-use Symfony\Component\Filesystem\Path;
+use MAChitgarha\Phirs\Util\Path;
+use Symfony\Component\Filesystem\Path as SymfonyPath;
 
 class WindowsDirectoryProvider implements Type\StandardDirectoryProvider
 {
@@ -18,9 +17,9 @@ class WindowsDirectoryProvider implements Type\StandardDirectoryProvider
 
     public function getHomePath(): string
     {
-        return Util::returnNonNull(
+        return Path::returnNonEmpty(
             Env::get('UserProfile') ?? $this->getHomeDriveHomePath(),
-            ExceptionMessageFactory::buildCannotFindPath('home folder'),
+            'home folder',
         );
     }
 
@@ -33,7 +32,7 @@ class WindowsDirectoryProvider implements Type\StandardDirectoryProvider
             ],
             fn(?string $carry, ?string $item) =>
                 is_null($carry) || is_null($item) ? null :
-                    Path::join($carry, $item),
+                    SymfonyPath::join($carry, $item),
             // Prevent from halting at the very beginning
             ''
         );
@@ -41,9 +40,9 @@ class WindowsDirectoryProvider implements Type\StandardDirectoryProvider
 
     public function getDataPath(): string
     {
-        return Util::returnNonNull(
+        return Path::returnNonEmpty(
             Env::get('AppData'),
-            ExceptionMessageFactory::buildCannotFindPath('AppData folder'),
+            'AppData folder'
         );
     }
 
@@ -54,9 +53,9 @@ class WindowsDirectoryProvider implements Type\StandardDirectoryProvider
 
     public function getLocalDataPath(): string
     {
-        return Util::returnNonNull(
+        return Path::returnNonEmpty(
             $this->getLocalDataPathNullable(),
-            ExceptionMessageFactory::buildCannotFindPath('LocalAppData folder'),
+            'LocalAppData folder',
         );
     }
 
@@ -67,16 +66,19 @@ class WindowsDirectoryProvider implements Type\StandardDirectoryProvider
 
     public function getTemporaryPath(): string
     {
-        return Util::returnNonNull(
+        return Path::returnNonEmpty(
             $this->getTemporaryPathNullable(),
-            ExceptionMessageFactory::buildCannotFindPath('temporary folder'),
+            'temporary folder',
         );
     }
 
     public function getCachePath(): string
     {
-        return $this->getLocalDataPathNullable() ??
-            $this->getTemporaryPathNullable();
+        return Path::returnNonEmpty(
+            $this->getLocalDataPathNullable() ??
+                $this->getTemporaryPathNullable(),
+            'cache folder (any of LocalAppData or temporary folders)'
+        );
     }
 
     public function getConfigPath(): string

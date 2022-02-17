@@ -2,7 +2,7 @@
 
 namespace MAChitgarha\Phirs\Traits;
 
-use Exception;
+use MAChitgarha\Phirs\Exception\PathNotFoundException;
 use MAChitgarha\Phirs\Util\Env;
 use MAChitgarha\Phirs\Util\Util;
 
@@ -30,10 +30,10 @@ trait XdgBasedirSpec
         try {
             return Env::get($envName) ??
                 $this->getHomeChildPath(...$childPaths);
-        } catch (Exception $e) {
-            throw new Exception(
-                'Cannot find a proper path for the requested directory ' .
-                "(reasons: Env $envName not set and {$e->getMessage()})"
+        } catch (PathNotFoundException $e) {
+            throw new PathNotFoundException(
+                'requested directory',
+                "env $envName not set and {$e->getMessage()}"
             );
         }
     }

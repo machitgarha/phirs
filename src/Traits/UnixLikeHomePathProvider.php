@@ -3,8 +3,7 @@
 namespace MAChitgarha\Phirs\Traits;
 
 use MAChitgarha\Phirs\Util\Env;
-use MAChitgarha\Phirs\Util\Util;
-use MAChitgarha\Phirs\Util\ExceptionMessageFactory;
+use MAChitgarha\Phirs\Util\Path;
 
 trait UnixLikeHomePathProvider
 {
@@ -12,9 +11,9 @@ trait UnixLikeHomePathProvider
 
     public function getHomePath(): string
     {
-        return Util::returnNonNull(
+        return Path::returnNonEmpty(
             Env::get('HOME') ?? $this->getHomePathByPosixUid(),
-            ExceptionMessageFactory::buildCannotFindPath('home directory'),
+            'home directory',
         );
     }
 
