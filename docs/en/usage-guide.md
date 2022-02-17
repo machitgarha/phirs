@@ -208,3 +208,9 @@ The steps are simple:
     ```
 
     And again, if you did something look like this, we ask you to share your code with us!
+
+## Ready to Contribute Also?
+
+After reading this page, chances are you are ready to contribute, because it covers most of the knowledge in order to master the source code, although the code is tiny and simple.
+
+Hey... Where did you go? Oh, thanks for forking...!
