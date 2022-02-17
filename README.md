@@ -1,14 +1,14 @@
 # Phirs
 
-A library providing platform-specific user-accessible directory paths, such as config and cache. Inspired by [dirs-rs](https://github.com/dirs-dev/dirs-rs).
+A library providing platform-specific user directory paths, such as config and cache. Inspired by [dirs-rs](https://github.com/dirs-dev/dirs-rs).
 
 ## Features
 
--   **Multiple platform**. Providing cross-platform paths, plus platform-specific ones. Make your app run-everywhere or target a specific platform. See [Platform Support](#platform-support) for more details.
+-   **Multiple Platform**. Providing cross-platform paths, plus platform-specific ones. Make your app run-everywhere or target a specific platform. See [Platform Support](#platform-support) for more details.
 
--   **Hackable**. Adding support for a specific platform [is easy](#). <!-- TODO: Add a link to contributions describing this. -->
+-   **Hackable**. Adding support for a specific platform [is easy](./docs/en/usage-guide#example-android-platform-support).
 
--   **Well-designed**. Provide good design and simple abstractions (with the help of powerful PHP interfaces and traits).
+-   **Well-Designed**. Provide good design and simple abstractions (with the help of powerful PHP interfaces and traits).
 
 ## Why?
 
@@ -19,9 +19,9 @@ When writing a console application (or even a graphical one; who knows, people m
 -   create a media and put it somewhere reasonable,
 -   etc.
 
-For the best results, the location has to be cross-platform, permanent, accessible, well-known and non-relative.
+For the best results, the locations has to be cross-platform, permanent, accessible, well-known and non-relative.
 
-Phirs can to help you in these situations.
+Phirs can help you in these situations.
 
 ### But There Is Another Library!
 
@@ -68,19 +68,19 @@ What a provider is? Why we use `createStandard()`? Can I extend it and map a spe
 |GNU/Linux distributions|✅|✅|✅|✅|
 |Windows|✅|✅|✅|✅|
 |Mac OS|✅|✅|✅|✅|
-|[Termux](https://termux.com) on Android|✅|✅|✅❕|❌|
+|[Termux](https://termux.com) on Android|✅|✅|✅❕(1)|❌|
 |BSD|✅|❌|❔|❌|
 |Solaris|✅|❌|❔|❌|
 |Android|✅|❌|❓|❌|
 |iOS|✅|❌|❔|❌|
 
-❕: Have notes.
-❔: Not known or depends on the environment.
-❓: Like ❔, but most likely no.
+-   ❕: Has notes.
+-   ❔: Not known or depends on the environment.
+-   ❓: Like ❔, but most likely no.
 
 ### Notes
 
--   It might not be exactly what you or users expect; e.g. pictures directory path is inside Termux home, not the internal SDCard (i.e. `/sdcard`).
+1.  It might not be exactly what you or users expect; e.g. pictures directory path is inside Termux home, not the internal SDCard (i.e. `/sdcard`).
 
 ## Contribute!
 
