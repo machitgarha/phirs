@@ -59,7 +59,7 @@ $docsPath = $dirProvider->getDocumentsPath();
 // Load or save something…!
 ```
 
-What a provider is? Why we use `createStandard`? Can I extend it and map a specific platform to my own provider? (Consider give your code back if you did it BTW.) See [Usage Guide](./docs/en/usage-guide.md) for more details.
+What a provider is? Why we use `createStandard()`? Can I extend it and map a specific platform to my own provider? See [Usage Guide](./docs/en/usage-guide.md) for more details.
 
 ## Platform Support
 
@@ -82,9 +82,11 @@ What a provider is? Why we use `createStandard`? Can I extend it and map a speci
 
 -   It might not be exactly what you or users expect; e.g. pictures directory path is inside Termux home, not the internal SDCard (i.e. `/sdcard`).
 
-### Fork and Improve It!
+## Contribute!
 
-By the way, if you can improve support for a specific platform, why not?
+In a world like this, everyone should be a contributor. So, start helping this project by creating an issue, forking and improving it, or simply introducing it to your PHP developer friends!
+
+If you want to get an overall overview of the code, go and read [Usage Guide](#usage-guide).
 
 ## License
 
