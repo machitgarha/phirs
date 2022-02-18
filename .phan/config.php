@@ -12,4 +12,5 @@ return [
     'exclude_analysis_directory_list' => [
         'vendor/',
     ],
+    'color_issue_messages_if_supported' => true,
 ];
