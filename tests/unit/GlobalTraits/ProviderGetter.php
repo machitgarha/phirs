@@ -1,6 +1,6 @@
 <?php
 
-namespace MAChitgarha\Phirs\Test\Unit\PlatformSpecific\Traits;
+namespace MAChitgarha\Phirs\Test\Unit\GlobalTraits;
 
 trait ProviderGetter
 {

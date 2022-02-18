@@ -2,6 +2,8 @@
 
 namespace MAChitgarha\Phirs\Test\Unit\PlatformSpecific\Traits;
 
+use Symfony\Component\Filesystem\Path;
+
 trait ProviderPathTester
 {
     abstract private static function getProvider(): object;

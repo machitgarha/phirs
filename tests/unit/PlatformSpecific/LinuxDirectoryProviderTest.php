@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 class LinuxDirectoryProviderTest extends TestCase
 {
     use Traits\ProviderPathTester;
-    use Traits\ProviderGetter;
+    use GlobalTraits\ProviderGetter;
     use GlobalTraits\PlatformChecker;
 
     private static LinuxDirectoryProvider $provider;

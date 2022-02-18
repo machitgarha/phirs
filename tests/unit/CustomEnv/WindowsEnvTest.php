@@ -9,6 +9,8 @@ use PHPUnit\Framework\TestCase;
 
 class WindowsEnvTest extends TestCase
 {
+    use Traits\SingleValueEnvTester;
+    use GlobalTraits\ProviderGetter;
     use GlobalTraits\PlatformChecker;
 
     private static $provider;
@@ -20,21 +22,13 @@ class WindowsEnvTest extends TestCase
         self::$provider = new WindowsDirectoryProvider();
     }
 
-    public function test(): void
+    public function singleValueEnvProvider(): array
     {
-        foreach ([
-            ['UserProfile', 'E:\\', 'getHomePath'],
+        return [
+            ['UserProfile', 'E:', 'getHomePath'],
             ['AppData', 'E:\\AppData', 'getDataPath'],
             ['LocalAppData', 'E:\\AppData\\Local', 'getLocalDataPath'],
             ['Temp', 'D:\\Temp', 'getTemporaryPath'],
-        ] as [$envName, $envValue, $pathGetterMethod]) {
-
-            \putenv("$envName=$envValue");
-
-            $this->assertSame(
-                $envValue,
-                self::$provider->$pathGetterMethod(),
-            );
-        }
+        ];
     }
 }

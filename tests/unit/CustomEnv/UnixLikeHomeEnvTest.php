@@ -8,6 +8,8 @@ use PHPUnit\Framework\TestCase;
 
 class UnixLikeHomeEnvTest extends TestCase
 {
+    use Traits\SingleValueEnvTester;
+    use GlobalTraits\ProviderGetter;
     use GlobalTraits\PlatformChecker;
 
     private static $provider;
@@ -27,13 +29,10 @@ class UnixLikeHomeEnvTest extends TestCase
         };
     }
 
-    public function test(): void
+    public function singleValueEnvProvider(): array
     {
-        $envName = 'HOME';
-        $envValue = '/tmp/test';
-
-        \putenv("$envName=$envValue");
-
-        $this->assertSame($envValue, self::$provider->getHomePath());
+        return [
+            ['HOME', '/tmp/home/test', 'getHomePath'],
+        ];
     }
 }
