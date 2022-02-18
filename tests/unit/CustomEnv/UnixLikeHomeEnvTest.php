@@ -34,6 +34,6 @@ class UnixLikeHomeEnvTest extends TestCase
 
         \putenv("$envName=$envValue");
 
-        $this->assertEquals($envValue, self::$provider->getHomePath());
+        $this->assertSame($envValue, self::$provider->getHomePath());
     }
 }

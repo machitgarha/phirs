@@ -38,7 +38,7 @@ class XdgEnvTest extends TestCase
 
             \putenv("$envName=$envValue");
 
-            $this->assertEquals(
+            $this->assertSame(
                 $envValue,
                 self::$provider->$pathGetterMethod(),
             );
@@ -54,7 +54,7 @@ class XdgEnvTest extends TestCase
 
             \putenv("$envName=$envValue");
 
-            $this->assertEquals(
+            $this->assertSame(
                 $envValue,
                 \join(':', self::$provider->$pathGetterMethod()),
             );

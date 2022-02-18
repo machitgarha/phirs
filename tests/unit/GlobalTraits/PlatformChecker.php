@@ -6,7 +6,7 @@ use MAChitgarha\Phirs\Util\Platform;
 
 trait PlatformChecker
 {
-    abstract public static function markTestSkipped(): void;
+    abstract public static function markTestSkipped(string $message): void;
 
     /**
      * Skips the test if the current platform is not among supported platforms.

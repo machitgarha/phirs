@@ -31,7 +31,7 @@ class WindowsEnvTest extends TestCase
 
             \putenv("$envName=$envValue");
 
-            $this->assertEquals(
+            $this->assertSame(
                 $envValue,
                 self::$provider->$pathGetterMethod(),
             );
