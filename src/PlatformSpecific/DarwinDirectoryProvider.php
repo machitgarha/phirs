@@ -30,7 +30,7 @@ class DarwinDirectoryProvider implements Type\StandardDirectoryProvider
         return $this->getHomeLibraryChildPath('Caches');
     }
 
-    private function getApplicationSupportPath(): string
+    public function getApplicationSupportPath(): string
     {
         return $this->getHomeLibraryChildPath('Application Support');
     }
