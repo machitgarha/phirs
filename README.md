@@ -19,9 +19,11 @@ When writing a console application (or even a graphical one; who knows, people m
 -   create a media and put it somewhere reasonable,
 -   etc.
 
-For the best results, the locations has to be cross-platform, permanent, accessible, well-known and non-relative.
+For the best results, the locations should be cross-platform, permanent, accessible, well-known and non-relative.
 
 Phirs can help you in these situations.
+
+**Note:** The library does not guarantee that all provided paths meet all the conditions above, although it helps you achieving them; because of performance, and the fact that different users may have different needs (e.g. one may check for a path to exist, one may suppose it to exist). Theoretically, in a standard environment, all these conditions are met.
 
 ### But There Is Another Library!
 

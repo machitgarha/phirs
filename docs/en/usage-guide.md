@@ -71,7 +71,7 @@ If you instantiated a provider directly, e.g. Linux provider, you may use platfo
 $executables = $dirProvider->getExecutablesPath();
 ```
 
-**Important Note:** The returning paths are not checked to exist, be accessible (readable or writeable), or be absolute (i.e. not relative), because different users may have different needs.
+**Important Note:** The returning paths are not checked to exist, be accessible (readable or writeable), or be absolute (i.e. not relative).
 
 ## Exception Handling
 
