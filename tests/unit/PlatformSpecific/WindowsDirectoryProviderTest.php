@@ -11,7 +11,6 @@ class WindowsDirectoryProviderTest extends TestCase
 {
     use Traits\ProviderPathTester;
     use Traits\ProviderGetter;
-    use Traits\IsAbsoluteAsserter;
     use GlobalTraits\PlatformChecker;
 
     private static WindowsDirectoryProvider $provider;

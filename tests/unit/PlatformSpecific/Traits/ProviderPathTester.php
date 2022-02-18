@@ -18,9 +18,12 @@ trait ProviderPathTester
     abstract public static function assertNotEmpty($path): void;
     abstract public static function assertIsReadable(string $path): void;
     abstract public static function assertIsWritable(string $path): void;
+    abstract public static function assertTrue($value): void;
 
-    // Custom-defined
-    abstract public static function assertIsAbsolute(string $path): void;
+    private static function assertIsAbsolute(string $path): void
+    {
+        self::assertTrue(Path::isAbsolute($path));
+    }
 
     /**
      * Test if the provider's path getter methods return a good path.
