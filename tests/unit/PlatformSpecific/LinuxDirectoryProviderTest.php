@@ -16,35 +16,35 @@ class LinuxDirectoryProviderTest extends TestCase
 
     private static LinuxDirectoryProvider $provider;
 
-    private static function getPathGetterMethods(): array
-    {
-        return [
-            'getHomePath',
-
-            'getExecutablePath',
-            'getCachePath',
-            'getConfigPath',
-            'getDataPath',
-            'getStatePath',
-            'getRuntimePath',
-
-            'getDesktopPath',
-            'getDocumentsPath',
-            'getDownloadsPath',
-            'getFontsPath',
-            'getMusicPath',
-            'getPicturesPath',
-            'getPublicPath',
-            'getTemplatesPath',
-            'getVideosPath',
-        ];
-    }
-
     public static function setUpBeforeClass(): void
     {
         self::skipIfPlatformUnsupported(Platform::LINUX);
 
         self::$provider = new LinuxDirectoryProvider();
+    }
+
+    public static function pathGetterMethodNameProvider(): array
+    {
+        return [
+            ['getHomePath'],
+
+            ['getExecutablePath'],
+            ['getCachePath'],
+            ['getConfigPath'],
+            ['getDataPath'],
+            ['getStatePath'],
+            ['getRuntimePath'],
+
+            ['getDesktopPath'],
+            ['getDocumentsPath'],
+            ['getDownloadsPath'],
+            ['getFontsPath'],
+            ['getMusicPath'],
+            ['getPicturesPath'],
+            ['getPublicPath'],
+            ['getTemplatesPath'],
+            ['getVideosPath'],
+        ];
     }
 
     // TODO: Test get*PathSet() as well

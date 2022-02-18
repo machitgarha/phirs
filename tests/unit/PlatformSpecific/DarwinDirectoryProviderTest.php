@@ -16,33 +16,33 @@ class DarwinDirectoryProviderTest extends TestCase
 
     private static DarwinDirectoryProvider $provider;
 
-    private static function getPathGetterMethods(): array
-    {
-        return [
-            'getHomePath',
-
-            'getApplicationSupportPath',
-            'getCachePath',
-            'getConfigPath',
-            'getDataPath',
-            'getPreferencesPath',
-
-            'getDesktopPath',
-            'getDocumentsPath',
-            'getDownloadsPath',
-            'getFontsPath',
-            'getMoviesPath',
-            'getMusicPath',
-            'getPicturesPath',
-            'getPublicPath',
-            'getVideosPath',
-        ];
-    }
-
     public static function setUpBeforeClass(): void
     {
         self::skipIfPlatformUnsupported(Platform::DARWIN);
 
         self::$provider = new DarwinDirectoryProvider();
+    }
+
+    public static function pathGetterMethodNameProvider(): array
+    {
+        return [
+            ['getHomePath'],
+
+            ['getApplicationSupportPath'],
+            ['getCachePath'],
+            ['getConfigPath'],
+            ['getDataPath'],
+            ['getPreferencesPath'],
+
+            ['getDesktopPath'],
+            ['getDocumentsPath'],
+            ['getDownloadsPath'],
+            ['getFontsPath'],
+            ['getMoviesPath'],
+            ['getMusicPath'],
+            ['getPicturesPath'],
+            ['getPublicPath'],
+            ['getVideosPath'],
+        ];
     }
 }

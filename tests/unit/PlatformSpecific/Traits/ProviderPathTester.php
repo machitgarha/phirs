@@ -7,10 +7,12 @@ trait ProviderPathTester
     abstract private static function getProvider(): object;
 
     /**
-     * Returns the names of path getter methods of the provider.
-     * @return array An array of function names (i.e. strings).
+     * Provide the names of path getter methods of the directory provider.
+     *
+     * Do not confuse the term provider in the end with providers in Phirs. This
+     * is a PHPUnit data provider.
      */
-    abstract private static function getPathGetterMethods(): array;
+    abstract public static function pathGetterMethodNameProvider(): array;
 
     // PHPUnit TestCase methods
     abstract public static function assertNotEmpty($path): void;
@@ -27,21 +29,20 @@ trait ProviderPathTester
      * We suppose the tests are done in a clean and standard environments, so
      * the conditions must be met. Note that, however, Phirs by default does
      * not check these in its logic.
+     *
+     * @dataProvider pathGetterMethodNameProvider
      */
-    public function testProviderPaths(): void
+    public function testProviderPath(string $pathGetter): void
     {
-        $provider = self::getProvider();
+        $path = self::getProvider()->$pathGetter();
 
-        foreach (self::getPathGetterMethods() as $pathGetter) {
-            $path = $provider->$pathGetter();
+        $this->assertNotEmpty($path);
+        $this->assertIsAbsolute($path);
 
-            $this->assertNotEmpty($path);
-            $this->assertIsAbsolute($path);
+        $this->makeDirectoryIfNotExists($path);
 
-            $this->makeDirectoryIfNotExists($path);
-            $this->assertIsReadable($path);
-            $this->assertIsWritable($path);
-        }
+        $this->assertIsReadable($path);
+        $this->assertIsWritable($path);
     }
 
     private function makeDirectoryIfNotExists(string $path): void

@@ -16,32 +16,32 @@ class WindowsDirectoryProviderTest extends TestCase
 
     private static WindowsDirectoryProvider $provider;
 
-    private static function getPathGetterMethods(): array
-    {
-        return [
-            'getHomePath',
-
-            'getCachePath',
-            'getConfigPath',
-            'getDataPath',
-            'getLocalDataPath',
-            'getTemporaryPath',
-
-            'getDesktopPath',
-            'getDocumentsPath',
-            'getDownloadsPath',
-            'getMusicPath',
-            'getPicturesPath',
-            'getPublicPath',
-            'getTemplatesPath',
-            'getVideosPath',
-        ];
-    }
-
     public static function setUpBeforeClass(): void
     {
         self::skipIfPlatformUnsupported(Platform::WINDOWS);
 
         self::$provider = new WindowsDirectoryProvider();
+    }
+
+    public static function pathGetterMethodNameProvider(): array
+    {
+        return [
+            ['getHomePath'],
+
+            ['getCachePath'],
+            ['getConfigPath'],
+            ['getDataPath'],
+            ['getLocalDataPath'],
+            ['getTemporaryPath'],
+
+            ['getDesktopPath'],
+            ['getDocumentsPath'],
+            ['getDownloadsPath'],
+            ['getMusicPath'],
+            ['getPicturesPath'],
+            ['getPublicPath'],
+            ['getTemplatesPath'],
+            ['getVideosPath'],
+        ];
     }
 }
