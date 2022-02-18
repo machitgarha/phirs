@@ -171,7 +171,7 @@ The steps are simple:
     }
     ```
 
-1.  **Create New Providers and Platforms, If Needed.** Refer to the previous example for more details.
+1.  **Create New Providers and Platforms, If Needed.** Refer to the previous example for more details. You can use already-defined traits like `DesktopPathProvider`.
 
 1.  **Register Your Mappings.** Using `DirectoryProviderFactory::map()`, introduce your new type and map your providers to platforms. Obviously, all your providers must implement your type, otherwise `map()` will throw an exception. You can use static method chaining trick also:
 

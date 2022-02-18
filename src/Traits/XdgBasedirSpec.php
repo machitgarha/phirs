@@ -12,6 +12,7 @@ use MAChitgarha\Phirs\Util\Path;
 trait XdgBasedirSpec
 {
     use UnixLikeHomePathProvider;
+    use HomeChildPathProvider;
 
     private function getEnvOrHomeChildPath(
         string $envName,

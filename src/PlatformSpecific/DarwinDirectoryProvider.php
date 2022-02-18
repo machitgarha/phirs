@@ -11,6 +11,7 @@ use MAChitgarha\Phirs\Traits;
 class DarwinDirectoryProvider implements Type\StandardDirectoryProvider
 {
     use Traits\UnixLikeHomePathProvider;
+    use Traits\HomeChildPathProvider;
     use Traits\HomeBased\CommonPathProvider;
     use Traits\HomeBased\DesktopPathProvider;
     use Traits\HomeBased\PublicPathProvider;

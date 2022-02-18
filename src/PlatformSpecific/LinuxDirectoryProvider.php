@@ -18,9 +18,4 @@ class LinuxDirectoryProvider implements Type\StandardDirectoryProvider
     {
         return Path::join($this->getDataPath(), 'fonts');
     }
-
-    public function getExecutablesPath(): string
-    {
-        return $this->getHomeChildPath('.local', 'bin');
-    }
 }

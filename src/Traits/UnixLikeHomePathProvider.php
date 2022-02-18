@@ -7,8 +7,6 @@ use MAChitgarha\Phirs\Util\Path;
 
 trait UnixLikeHomePathProvider
 {
-    use HomeChildPathProvider;
-
     public function getHomePath(): string
     {
         return Path::returnNonEmpty(
