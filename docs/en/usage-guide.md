@@ -95,11 +95,18 @@ Let's say you want to make a standard provider for Android platform, and set `Di
 
     class AndroidDirectoryProvider implements Type\StandardDirectoryProvider
     {
+        use Traits\HomeChildPathProvider;
         use Traits\HomeBased\CommonPathProvider;
 
         public function getHomePath(): string
         {
             // Get the home directory, e.g. /sdcard
+        }
+
+        public function getCameraPath(): string
+        {
+            // Using trait HomeChildPathProvider
+            return $this->getHomeChildPath('DCIM', 'Camera');
         }
 
         // ...
