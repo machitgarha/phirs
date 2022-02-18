@@ -17,6 +17,7 @@ class DarwinDirectoryProvider implements Type\StandardDirectoryProvider
     use Traits\HomeBased\PublicPathProvider;
     use Traits\HomeBased\MoviesPathProvider {
         Traits\HomeBased\MoviesPathProvider::getVideosPath insteadof
+            // @phan-suppress-next-line PhanRequiredTraitNotAdded
             Traits\HomeBased\CommonPathProvider;
     }
 
