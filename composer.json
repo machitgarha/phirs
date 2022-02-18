@@ -13,7 +13,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "MAChitgarha\\Phirs\\": "src/"
+            "MAChitgarha\\Phirs\\": "src/",
+            "MAChitgarha\\Phirs\\Test\\Unit\\": "tests/unit"
         }
     },
     "require": {
