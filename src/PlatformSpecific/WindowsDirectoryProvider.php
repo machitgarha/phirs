@@ -31,8 +31,9 @@ class WindowsDirectoryProvider implements Type\StandardDirectoryProvider
                 Env::get('HomeDrive'),
                 Env::get('HomePath'),
             ],
-            fn(?string $carry, ?string $item) =>
-                is_null($item) ? null : SymfonyPath::join($carry, $item),
+            fn(string $carry, ?string $item) =>
+                is_null($carry) || is_null($item) ? null :
+                    SymfonyPath::join($carry, $item),
             ''
         );
     }
