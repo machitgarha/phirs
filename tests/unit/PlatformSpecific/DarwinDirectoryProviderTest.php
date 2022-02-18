@@ -3,6 +3,7 @@
 namespace MAChitgarha\Phirs\Test\Unit\PlatformSpecific;
 
 use MAChitgarha\Phirs\PlatformSpecific\DarwinDirectoryProvider;
+use MAChitgarha\Phirs\Test\Unit\GlobalTraits;
 use MAChitgarha\Phirs\Util\Platform;
 use PHPUnit\Framework\TestCase;
 
@@ -11,6 +12,7 @@ class DarwinDirectoryProviderTest extends TestCase
     use Traits\ProviderPathTester;
     use Traits\ProviderGetter;
     use Traits\IsAbsoluteAsserter;
+    use GlobalTraits\PlatformChecker;
 
     private static DarwinDirectoryProvider $provider;
 
@@ -39,9 +41,7 @@ class DarwinDirectoryProviderTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        if (Platform::autoDetect() !== Platform::DARWIN) {
-            self::markTestSkipped('Not a Darwin platform');
-        }
+        self::skipIfPlatformUnsupported(Platform::DARWIN);
 
         self::$provider = new DarwinDirectoryProvider();
     }

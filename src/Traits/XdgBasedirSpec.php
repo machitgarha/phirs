@@ -87,6 +87,6 @@ trait XdgBasedirSpec
     public function getDataPathSet(): array
     {
         return Env::getColonedArray('XDG_DATA_DIRS') ??
-            ['/usr/local/share/', '/usr/share/'];
+            ['/usr/local/share', '/usr/share'];
     }
 }
