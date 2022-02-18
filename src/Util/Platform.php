@@ -26,12 +26,15 @@ class Platform
      * specialize an available platform as a new platform, or prepend rules for
      * detecting a platform.
      */
-    protected static array $customDetectors = [];
+    protected static function getCustomDetectors(): array
+    {
+        return [];
+    }
 
     public static function autoDetect(): string
     {
         foreach (
-            static::$customDetectors + self::$detectors
+            static::getCustomDetectors() + self::$detectors
                 as $platform => $detector
         ) {
             if ($detector()) {

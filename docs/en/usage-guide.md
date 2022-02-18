@@ -120,9 +120,10 @@ Let's say you want to make a standard provider for Android platform, and set `Di
     {
         public const ANDROID = 'Android';
 
-        protected static array $customDetectors = [
-            self::ANDROID => [self::class, 'isAndroid'],
-        ];
+        protected static function getCustomDetectors(): array
+        {
+            return [self::ANDROID => fn() => self::isAndroid()];
+        }
 
         private static function isAndroid(): bool
         {
