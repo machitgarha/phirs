@@ -6,7 +6,7 @@ For a better community, please read and follow the [code of conduct](./CODE_OF_C
 
 ## Issues
 
-It is great to include examples in your issues, like what fails or what you want to achieve. 
+It is great to include examples in your issues, like what fails or what you want to achieve.
 
 ## Branching Model
 
@@ -16,10 +16,10 @@ As a result, you always have to make changes on `develop`, and merge back to the
 
 ## Warming Up
 
-For the development process, install dev dependencies first:
+For the development process, install dependencies first:
 
 ```bash
-composer require --dev
+composer install
 ```
 
 ## Tests, Tests and Tests
