@@ -29,8 +29,8 @@ trait PlatformChecker
         if ($toSkip) {
             self::markTestSkipped(
                 'Current platform is not supported for the test, must be ' . (
-                    count($supportedPlatforms) === 1 ? $supportedPlatforms[0] :
-                        ('one of ' . join(',', $supportedPlatforms))
+                    \count($supportedPlatforms) === 1 ? $supportedPlatforms[0] :
+                        ('one of ' . \join(', ', $supportedPlatforms))
                 )
             );
         }
