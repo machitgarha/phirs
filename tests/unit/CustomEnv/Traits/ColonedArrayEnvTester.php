@@ -13,7 +13,7 @@ trait ColonedArrayEnvTester
      * Just like SingleValueEnvTester::singleValueEnvProvider(), but the value
      * of an environment variable must be an array.
      */
-    abstract public function colonedArrayEnvProvider(): array;
+    abstract public static function colonedArrayEnvProvider(): array;
 
     /**
      * @dataProvider colonedArrayEnvProvider

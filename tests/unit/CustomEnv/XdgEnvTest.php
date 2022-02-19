@@ -14,6 +14,7 @@ class XdgEnvTest extends TestCase
 {
     use Traits\SingleValueEnvTester;
     use Traits\ColonedArrayEnvTester;
+    use Traits\EnvRestorer;
     use GlobalTraits\ProviderGetter;
     use GlobalTraits\PlatformChecker;
 
@@ -23,13 +24,15 @@ class XdgEnvTest extends TestCase
     {
         self::skipIfPlatformUnsupported(Platform::LINUX);
 
+        self::saveEnvValues();
+
         self::$provider = new class {
             // Using full name resolution not to conflict with other Traits\
             use \MAChitgarha\Phirs\Traits\XdgBasedirSpec;
         };
     }
 
-    public function singleValueEnvProvider(): array
+    public static function singleValueEnvProvider(): array
     {
         return [
             ['XDG_CONFIG_HOME', '/tmp/test/.config', 'getConfigPath'],
@@ -40,11 +43,24 @@ class XdgEnvTest extends TestCase
         ];
     }
 
-    public function colonedArrayEnvProvider(): array
+    public static function colonedArrayEnvProvider(): array
     {
         return [
             ['XDG_CONFIG_DIRS', ['/etc', '/tmp/etc'], 'getConfigPathSet'],
             ['XDG_DATA_DIRS', ['/var/local/share', '/tmp'], 'getDataPathSet'],
         ];
+    }
+
+    public static function getChangingEnvNames(): array
+    {
+        return \array_column([
+            ...self::singleValueEnvProvider(),
+            ...self::colonedArrayEnvProvider()
+        ], 0);
+    }
+
+    public static function tearDownAfterClass(): void
+    {
+        self::restoreEnvValues();
     }
 }

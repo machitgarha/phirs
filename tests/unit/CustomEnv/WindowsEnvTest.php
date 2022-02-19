@@ -10,6 +10,7 @@ use PHPUnit\Framework\TestCase;
 class WindowsEnvTest extends TestCase
 {
     use Traits\SingleValueEnvTester;
+    use Traits\EnvRestorer;
     use GlobalTraits\ProviderGetter;
     use GlobalTraits\PlatformChecker;
 
@@ -19,10 +20,12 @@ class WindowsEnvTest extends TestCase
     {
         self::skipIfPlatformUnsupported(Platform::WINDOWS);
 
+        self::saveEnvValues();
+
         self::$provider = new WindowsDirectoryProvider();
     }
 
-    public function singleValueEnvProvider(): array
+    public static function singleValueEnvProvider(): array
     {
         return [
             ['UserProfile', 'E:', 'getHomePath'],
@@ -30,5 +33,15 @@ class WindowsEnvTest extends TestCase
             ['LocalAppData', 'E:\\AppData\\Local', 'getLocalDataPath'],
             ['Temp', 'D:\\Temp', 'getTemporaryPath'],
         ];
+    }
+
+    public static function getChangingEnvNames(): array
+    {
+        return \array_column(self::singleValueEnvProvider(), 0);
+    }
+
+    public static function tearDownAfterClass(): void
+    {
+        self::restoreEnvValues();
     }
 }

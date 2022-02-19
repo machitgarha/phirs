@@ -13,7 +13,7 @@ trait SingleValueEnvTester
      * Provide a list of environment variable name and value to change, along
      * with name of a path getter method to assert the env change was effective.
      */
-    abstract public function singleValueEnvProvider(): array;
+    abstract public static function singleValueEnvProvider(): array;
 
     /**
      * @dataProvider singleValueEnvProvider

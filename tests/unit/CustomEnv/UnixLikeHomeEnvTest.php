@@ -9,6 +9,7 @@ use PHPUnit\Framework\TestCase;
 class UnixLikeHomeEnvTest extends TestCase
 {
     use Traits\SingleValueEnvTester;
+    use Traits\EnvRestorer;
     use GlobalTraits\ProviderGetter;
     use GlobalTraits\PlatformChecker;
 
@@ -23,16 +24,28 @@ class UnixLikeHomeEnvTest extends TestCase
             Platform::SOLARIS,
         ]);
 
+        self::saveEnvValues();
+
         self::$provider = new class {
             // Using full name resolution not to conflict with other Traits\
             use \MAChitgarha\Phirs\Traits\UnixLikeHomePathProvider;
         };
     }
 
-    public function singleValueEnvProvider(): array
+    public static function singleValueEnvProvider(): array
     {
         return [
             ['HOME', '/tmp/home/test', 'getHomePath'],
         ];
+    }
+
+    public static function getChangingEnvNames(): array
+    {
+        return \array_column(self::singleValueEnvProvider(), 0);
+    }
+
+    public static function tearDownAfterClass(): void
+    {
+        self::restoreEnvValues();
     }
 }
