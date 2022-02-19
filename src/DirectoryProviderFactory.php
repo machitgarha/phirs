@@ -49,7 +49,7 @@ class DirectoryProviderFactory
 
     private static function validateType(string $type): string
     {
-        if (\interface_exists($type)) {
+        if (!\interface_exists($type)) {
             throw new Exception("Type '$type' not defined as an interface");
         }
         return self::class;
@@ -57,7 +57,7 @@ class DirectoryProviderFactory
 
     private static function validateProvider(string $provider): string
     {
-        if (\class_exists($provider)) {
+        if (!\class_exists($provider)) {
             throw new Exception("Provider '$provider' is not a defined class");
         }
         return self::class;
@@ -67,7 +67,7 @@ class DirectoryProviderFactory
         string $provider,
         string $type
     ): string {
-        if (!\is_a($provider, $type)) {
+        if (!\is_subclass_of($provider, $type)) {
             throw new Exception(
                 "Provider '$provider' must be of type (i.e. implement) '$type'"
             );
