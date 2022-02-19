@@ -4,11 +4,13 @@ A library providing platform-specific user directory paths, such as config and c
 
 ## Features
 
--   **Multiple Platform**. Providing cross-platform paths, plus platform-specific ones. Make your app run-everywhere or target a specific platform. See [Platform Support](#platform-support) for more details.
+-   **Multiple Platform.** Providing cross-platform paths, plus platform-specific ones. Make your app run-everywhere or target a specific platform. See [Platform Support](#platform-support) for more details.
 
--   **Hackable**. Adding support for a specific platform [is easy](./docs/en/usage-guide#example-android-platform-support).
+-   **Hackable** Adding support for a specific platform [is easy](./docs/en/usage-guide#example-android-platform-support).
 
--   **Well-Designed**. Provide good design and simple abstractions (with the help of powerful PHP interfaces and traits).
+-   **Well-Designed.** Provide good design and simple abstractions (with the help of powerful PHP interfaces and traits).
+
+-   **Well-Tested.** Many pieces of the library are covered by unit tests. With the help of CI tools also, it is continuously tested againts major platforms.
 
 ## Why?
 
