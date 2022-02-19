@@ -55,5 +55,8 @@ trait ProviderPathTester
         if (!\is_dir($path) && !\mkdir($path, 0700, true)) {
             throw new \Exception("Cannot make directory '$path'");
         }
+
+        // For the paths on Windows platform to be writable
+        \chmod($path, 0777);
     }
 }
