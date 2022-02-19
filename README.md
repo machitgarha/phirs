@@ -92,6 +92,8 @@ In a world like this, everyone should be a contributor. So, start helping this p
 
 If you want to get an overall overview of the code, go and read [Usage Guide](#usage-guide).
 
+For the best results, see [Contribution Guidelines](./.github/CONTRIBUTING.md).
+
 ## License
 
 The project is licensed under [Apache 2.0 License](./LICENSE.md).
