@@ -1,6 +1,6 @@
 {
     "name": "machitgarha/phirs",
-    "description": "Cross-platform user directory paths provider, such as config and cache",
+    "description": "Cross-platform user directory paths, such as config and cache",
     "type": "library",
     "license": "Apache-2.0",
     "homepage": "https://github.com/machitgarha/phirs",
