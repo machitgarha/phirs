@@ -219,6 +219,6 @@ The steps are simple:
 
 ## Ready to Contribute Also?
 
-After reading this page, chances are you are ready to contribute, because it covers most of the knowledge in order to master the source code, although the code is tiny and simple.
+After reading this page, chances are you are ready to contribute, because it covers most of the knowledge in order to master the source code, although the code structure and simple.
 
 Hey... Where did you go? Oh, thanks for forking...!
