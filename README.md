@@ -76,7 +76,7 @@ What a provider is? Why we use `createStandard()`? Can I extend it and map a spe
 |BSD|✅|❌|❔|❌|
 |Solaris|✅|❌|❔|❌|
 |Android|✅|❌|❓|❌|
-|iOS|✅|❌|❔|❌|
+|iOS|✅|❌|❓|❌|
 
 -   ❕: Has notes.
 -   ❔: Not known or depends on the environment.
