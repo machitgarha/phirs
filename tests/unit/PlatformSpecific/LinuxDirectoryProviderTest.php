@@ -32,7 +32,9 @@ class LinuxDirectoryProviderTest extends TestCase
             ['getConfigPath'],
             ['getDataPath'],
             ['getStatePath'],
-            ['getRuntimePath'],
+            // Runtime path may not be set and it has not a fallback value, so
+            // ignore testing it here
+            // ['getRuntimePath'],
 
             ['getDesktopPath'],
             ['getDocumentsPath'],
