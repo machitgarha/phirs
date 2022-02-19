@@ -19,7 +19,7 @@
     },
     "require": {
         "php": "^7.4|^8.0",
-        "symfony/filesystem": "^6.0"
+        "symfony/filesystem": "5.4"
     },
     "require-dev": {
         "php": "^7.4|^8.0",
