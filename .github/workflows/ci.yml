@@ -8,15 +8,39 @@ on:
 
 jobs:
     run-tests:
-        runs-on: [ubuntu-latest, macos-latest, windows-latest]
+        name: Run PHPUnit Tests
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                os: [ubuntu-latest, macos-latest, windows-latest]
         steps:
             - uses: actions/checkout@v2
-            - run: composer install
-            - run: ./vendor/bin/phpunit
+
+            - name: Prepare PHP 7.4
+              uses: shivammathur/setup-php@v2
+              with:
+                php-extension: '7.4'
+
+            - name: Install Composer dependencies
+              run: composer install
+
+            - name: Run PHPUnit
+              run: ./vendor/bin/phpunit --verbose
 
     static-analysis:
+        name: Static Analysis using Phan
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - run: composer install
-            - run: ./vendor/bin/phan
+
+            - name: Prepare PHP 7.4 with Phan
+              uses: shivammathur/setup-php@v2
+              with:
+                php-extension: '7.4'
+                tools: phan
+
+            - name: Install Composer dependencies
+              run: composer install
+
+            - name: Run Phan
+              run: phan
