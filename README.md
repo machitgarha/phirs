@@ -1,5 +1,7 @@
 # Phirs
 
+[![Continuous Integration](https://github.com/machitgarha/phirs/actions/workflows/ci.yml/badge.svg)](https://github.com/machitgarha/phirs/actions/workflows/ci.yml)
+
 A library providing platform-specific user directory paths, such as config and cache. Inspired by [dirs-rs](https://github.com/dirs-dev/dirs-rs).
 
 ## Features
