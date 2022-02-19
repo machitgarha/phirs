@@ -76,16 +76,16 @@ class DirectoryProviderFactory
     }
 
     /**
-     * @param string $type Must an existing interface.
+     * @param string $type Must be an existing interface.
      */
     private static function createInternal(
         string $type,
         string $platform
     ): object {
-        $providerMapperForType = self::$providerMapper[$type];
+        $providerMapperForType = self::$providerMapper[$type] ?? null;
 
         if (\is_null($providerMapperForType)) {
-            throw new Exception("No provider defined for type '$type'");
+            throw new Exception("Type '$type' not registered for any provider");
         }
 
         $provider = $providerMapperForType[$platform] ?? null;
@@ -131,7 +131,7 @@ class DirectoryProviderFactory
     }
 
     /**
-     * @param string $type Must an existing interface.
+     * @param string $type Must be an existing interface.
      */
     private static function mapInternal(
         string $type,
@@ -161,6 +161,13 @@ class DirectoryProviderFactory
         return self::mapInternal($type, $platform, $provider);
     }
 
+    /**
+     * Map mulitple platforms to providers, for the specified provider type.
+     *
+     * @param array $mapping Platform (key) to provider class name (value)
+     * mapping.
+     * @return string Self.
+     */
     public static function mapMany(
         string $type,
         array $mapping
