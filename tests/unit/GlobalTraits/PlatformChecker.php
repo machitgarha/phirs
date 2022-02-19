@@ -10,10 +10,11 @@ trait PlatformChecker
 
     /**
      * Skips the test if the current platform is not among supported platforms.
+     *
+     * @param string|array supportedPlatforms
      */
-    public static function skipIfPlatformUnsupported(
-        string|array $supportedPlatforms
-    ): void {
+    public static function skipIfPlatformUnsupported($supportedPlatforms): void
+    {
         $supportedPlatforms = (array)($supportedPlatforms);
         $currentPlatform = Platform::autoDetect();
 
